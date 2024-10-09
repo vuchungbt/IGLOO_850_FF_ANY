@@ -1,0 +1,3617 @@
+<xmap>
+<doc type="fftrg" name="targetMap_850">
+<message></message>
+<exd>../jobs/IGLOO_850_FF_ANY/exd_Exchange850.xml#Exchange850</exd>
+<Directory>@targetfolder</Directory>
+<FileName>@output</FileName>
+<writeidentifiers>Yes</writeidentifiers>
+<TruncateTrailDelimiters>No</TruncateTrailDelimiters>
+<fileopenmode>w</fileopenmode>
+<node type="function" name="PreProcessing">
+<functions FunctionCount="3">
+<function type="Operatevariable" name="output" value="@Filename" />
+<function type="SetDynamicName" variable="temp" format="_[C].txt" />
+<function type="Operatevariable" name="output" value="+@temp" />
+</functions>
+</node>
+
+<recordend>NEWLINE</recordend>
+<offsetbegin>1</offsetbegin>
+<node type="record" name="OrderHeader_0010" level="1">
+<node type="field" order="1" name="RefKey1">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="2">
+<function type="Nextrow" exd="Exchange850" table="OrderHeader_0010"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey1"/>
+</functions>
+</node>
+<node type="field" order="2" name="RefKey2">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey2"/>
+</functions>
+</node>
+<node type="field" order="3" name="RefKey3">
+<offset>48</offset>
+<length>22</length>
+</node>
+<node type="field" order="4" name="RefKey4">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey5">
+<offset>92</offset>
+<length>4</length>
+<identifier>0010</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="CT"/>
+</functions>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="CTL"/>
+</functions>
+</node>
+<node type="field" order="8" name="Transaction_Method">
+<offset>101</offset>
+<length>2</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="ED"/>
+</functions>
+</node>
+<node type="field" order="9" name="Test_Indicator">
+<offset>103</offset>
+<length>1</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="P"/>
+</functions>
+</node>
+<node type="field" order="10" name="Document_Id">
+<offset>104</offset>
+<length>6</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="POI"/>
+</functions>
+</node>
+<node type="field" order="11" name="Document_Type">
+<offset>110</offset>
+<length>5</length>
+<functions FunctionCount="5">
+<function type="Defaultvalue" value="SA"/>
+<function type="Lookup" filename="@vLookup" section="0010_110" casesensitive="False" load="True" key="@vOracleNo"/>
+<function type="If" lvalue="@currentvalue" rvalue="110" operator="=" datatype="text"/>
+<function type="Fixedvalue" value="DS"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="12" name="Doc_Purpose_Code">
+<offset>115</offset>
+<length>2</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="00"/>
+</functions>
+</node>
+<node type="field" order="13" name="Document_Code">
+<offset>117</offset>
+<length>35</length>
+</node>
+<node type="field" order="14" name="TP_Translator_Code">
+<offset>152</offset>
+<length>30</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey1"/>
+</functions>
+</node>
+<node type="field" order="15" name="TP_Location_Code">
+<offset>182</offset>
+<length>35</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="TP_Translator_Code"/>
+</functions>
+</node>
+<node type="field" order="16" name="Ship To Address Location Code">
+<offset>188</offset>
+<length>4</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="Ship To Address Location Code"/>
+</functions>
+</node>
+<node type="field" order="17" name="TP_Description">
+<offset>217</offset>
+<length>74</length>
+</node>
+<node type="field" order="18" name="TP_Reference_EXT1">
+<offset>291</offset>
+<length>80</length>
+</node>
+<node type="field" order="19" name="TP_Reference_EXT2">
+<offset>371</offset>
+<length>80</length>
+</node>
+<node type="field" order="20" name="Trans_Date">
+<offset>451</offset>
+<length>8</length>
+<functions FunctionCount="1">
+<function type="Now" />
+</functions>
+</node>
+<node type="field" order="21" name="Trans_Date_Filler">
+<offset>459</offset>
+<length>1</length>
+</node>
+<node type="field" order="22" name="Trans_Date_Time">
+<offset>460</offset>
+<length>6</length>
+</node>
+<node type="field" order="23" name="Transaction_Run_Id">
+<offset>466</offset>
+<length>15</length>
+</node>
+<node type="field" order="24" name="Document_Standard">
+<offset>481</offset>
+<length>10</length>
+</node>
+<node type="field" order="25" name="TP_Org_Id">
+<offset>491</offset>
+<length>15</length>
+</node>
+<node type="field" order="26" name="Control1">
+<offset>506</offset>
+<length>10</length>
+</node>
+<node type="field" order="27" name="Control2">
+<offset>516</offset>
+<length>10</length>
+</node>
+<node type="field" order="28" name="Control3">
+<offset>526</offset>
+<length>10</length>
+</node>
+<node type="record" name="OrderHeader_1000" level="2">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="2">
+<function type="Nextrow" exd="Exchange850" table="OrderHeader_1000"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey1"/>
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey2"/>
+</functions>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>1000</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="PO"/>
+</functions>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="PO1"/>
+</functions>
+</node>
+<node type="field" order="8" name="PartShipAllow">
+<offset>101</offset>
+<length>1</length>
+</node>
+<node type="field" order="9" name="DropShipFlag">
+<offset>102</offset>
+<length>1</length>
+</node>
+<node type="field" order="10" name="OperCode">
+<offset>103</offset>
+<length>10</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="INSERT"/>
+</functions>
+</node>
+<node type="field" order="11" name="OperCodeEXT1">
+<offset>113</offset>
+<length>5</length>
+</node>
+<node type="field" order="12" name="CustPONum">
+<offset>118</offset>
+<length>50</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey2"/>
+</functions>
+</node>
+<node type="field" order="13" name="OrderDate">
+<offset>168</offset>
+<length>8</length>
+<functions FunctionCount="1">
+<function type="Now" />
+</functions>
+</node>
+<node type="field" order="14" name="Filler">
+<offset>176</offset>
+<length>1</length>
+</node>
+<node type="field" order="15" name="OrderTime">
+<offset>177</offset>
+<length>6</length>
+<functions FunctionCount="3">
+<function type="Now" />
+<function type="Convert" datatype="Datetime" format="YYYYMMSS"/>
+<function type="Format" format="HHMMSS"/>
+</functions>
+</node>
+<node type="field" order="16" name="VersionNum">
+<offset>183</offset>
+<length>22</length>
+</node>
+<node type="field" order="17" name="OrderType">
+<offset>205</offset>
+<length>30</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1000" field="OrderType"/>
+</functions>
+</node>
+<node type="field" order="18" name="OrderTypeEXT1">
+<offset>235</offset>
+<length>10</length>
+</node>
+<node type="field" order="19" name="OrderCategory">
+<offset>245</offset>
+<length>30</length>
+</node>
+<node type="field" order="20" name="OrderCategoryEXT1">
+<offset>275</offset>
+<length>10</length>
+</node>
+<node type="field" order="21" name="OrigSysDocuRef">
+<offset>285</offset>
+<length>50</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1000" field="OrigSysDocuRef"/>
+</functions>
+</node>
+<node type="field" order="22" name="OrderDateTypeCode">
+<offset>335</offset>
+<length>30</length>
+</node>
+<node type="field" order="23" name="OrderDateTypeCodeEXT1">
+<offset>365</offset>
+<length>30</length>
+</node>
+<node type="field" order="24" name="Agreement">
+<offset>395</offset>
+<length>30</length>
+</node>
+<node type="field" order="25" name="AgreementEXT1">
+<offset>425</offset>
+<length>30</length>
+</node>
+</node>
+<node type="record" name="OrderHeader_1090" level="2">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="2">
+<function type="Nextrow" exd="Exchange850" table="OrderHeader_1090"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey1"/>
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey2"/>
+</functions>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>1090</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="FB"/>
+</functions>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="SHP"/>
+</functions>
+</node>
+<node type="field" order="8" name="FOB_Point">
+<offset>101</offset>
+<length>30</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1090" field="FOB_Point"/>
+</functions>
+</node>
+<node type="field" order="9" name="FOBPointCode">
+<offset>131</offset>
+<length>30</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1090" field="FOBPointCode"/>
+</functions>
+</node>
+<node type="field" order="10" name="FOBPointCodeEXT1">
+<offset>161</offset>
+<length>161</length>
+</node>
+<node type="field" order="11" name="FreightTerm">
+<offset>181</offset>
+<length>30</length>
+</node>
+<node type="field" order="12" name="FreightTermCode">
+<offset>211</offset>
+<length>30</length>
+</node>
+<node type="field" order="13" name="FreightTermCodeEXT1">
+<offset>241</offset>
+<length>10</length>
+</node>
+<node type="field" order="14" name="FreightTermCodeEXT2">
+<offset>251</offset>
+<length>10</length>
+</node>
+<node type="field" order="15" name="FreightTermCodeEXT3">
+<offset>261</offset>
+<length>10</length>
+</node>
+<node type="field" order="16" name="FreightTermCodeEXT4">
+<offset>271</offset>
+<length>10</length>
+</node>
+<node type="field" order="17" name="FreightTermCodeEXT5">
+<offset>281</offset>
+<length>10</length>
+</node>
+<node type="field" order="18" name="ShipPriority">
+<offset>291</offset>
+<length>30</length>
+</node>
+<node type="field" order="19" name="ShipPriorityCode">
+<offset>321</offset>
+<length>30</length>
+</node>
+<node type="field" order="20" name="ShipPriorityCodeEXT1">
+<offset>351</offset>
+<length>20</length>
+</node>
+<node type="field" order="21" name="FreiCarrierCode">
+<offset>371</offset>
+<length>30</length>
+</node>
+<node type="field" order="22" name="FreiCarrierCodeEXT1">
+<offset>401</offset>
+<length>30</length>
+</node>
+<node type="field" order="23" name="FreiCarrierCodeEXT2">
+<offset>431</offset>
+<length>10</length>
+</node>
+<node type="field" order="24" name="ShipMethCode">
+<offset>441</offset>
+<length>30</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1090" field="ShipMethCode"/>
+</functions>
+</node>
+<node type="field" order="25" name="ShipMethCodeEXT1">
+<offset>471</offset>
+<length>30</length>
+</node>
+<node type="field" order="26" name="ShipMethCodeEXT2">
+<offset>501</offset>
+<length>10</length>
+</node>
+<node type="field" order="27" name="ShipToLerAbv">
+<offset>511</offset>
+<length>22</length>
+</node>
+<node type="field" order="28" name="ShipToLerBel">
+<offset>533</offset>
+<length>22</length>
+</node>
+</node>
+<node type="record" name="OrderHeader_1100" level="2">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="12">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="Check_DropShip"/>
+<function type="UpperCase" variable="@currentvalue"/>
+<function type="If" lvalue="@currentvalue" rvalue="DROPSHIP" operator="="/>
+<function type="Setvariable" name="vReciverID1" value="1"/>
+<function type="Else" />
+<function type="Setvariable" name="vReciverID1" value="0"/>
+<function type="Fixedvalue" value="@null1"/>
+<function type="EndIf" />
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Nextrow" exd="Exchange850" table="OrderHeader_1100"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1100" field="TP_Code"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1100" field="RefKey1"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>1100</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Defaultvalue" value="NT"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Defaultvalue" value="SHP"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="8" name="SHIPPING_INSTRUCTIONS_A">
+<offset>101</offset>
+<length>200</length>
+</node>
+<node type="field" order="9" name="SHIPPING_INSTRUCTIONS_B">
+<offset>301</offset>
+<length>200</length>
+</node>
+</node>
+<node type="record" name="OrderHeader_1110" level="2">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="2">
+<function type="Nextrow" exd="Exchange850" table="OrderHeader_1110"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey1"/>
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey2"/>
+</functions>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>1110</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="MS"/>
+</functions>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="MIS"/>
+</functions>
+</node>
+<node type="field" order="8" name="CustPODate">
+<offset>101</offset>
+<length>8</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1110" field="CustPODate"/>
+</functions>
+</node>
+<node type="field" order="9" name="Filler">
+<offset>109</offset>
+<length>1</length>
+</node>
+<node type="field" order="10" name="OrderTime">
+<offset>110</offset>
+<length>6</length>
+<functions FunctionCount="3">
+<function type="Now" />
+<function type="Convert" datatype="Datetime" format="YYYYMMSS"/>
+<function type="Format" format="HHMMSS"/>
+</functions>
+</node>
+<node type="field" order="11" name="EarliestSchdLmt">
+<offset>116</offset>
+<length>22</length>
+</node>
+<node type="field" order="12" name="LatestSchdLmt">
+<offset>138</offset>
+<length>22</length>
+</node>
+<node type="field" order="13" name="SalesRep">
+<offset>160</offset>
+<length>30</length>
+</node>
+<node type="field" order="14" name="Demand_Class">
+<offset>190</offset>
+<length>30</length>
+</node>
+<node type="field" order="15" name="Demand_Class_Code">
+<offset>220</offset>
+<length>30</length>
+</node>
+<node type="field" order="16" name="Demand_Class_CodeEXT">
+<offset>250</offset>
+<length>30</length>
+</node>
+</node>
+<node type="record" name="OrderHeader_1200" level="2">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="2">
+<function type="Nextrow" exd="Exchange850" table="OrderHeader_1200"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey1"/>
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey2"/>
+</functions>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>1200</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="A1"/>
+</functions>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="HD1"/>
+</functions>
+</node>
+<node type="field" order="8" name="Context">
+<offset>101</offset>
+<length>30</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1200" field="Context"/>
+</functions>
+</node>
+<node type="field" order="9" name="Freight_And_Pay_Terms">
+<offset>131</offset>
+<length>80</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1200" field="Freight_And_Pay_Terms"/>
+</functions>
+</node>
+<node type="field" order="10" name="PO_Type">
+<offset>211</offset>
+<length>80</length>
+<functions FunctionCount="4">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1200" field="PO_Type"/>
+<function type="If" lvalue="@currentvalue" rvalue="BK" operator="="/>
+<function type="Fixedvalue" value="@null1"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="11" name="PO_Facility_Number">
+<offset>291</offset>
+<length>80</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1200" field="PO_Facility_Number"/>
+</functions>
+</node>
+<node type="field" order="12" name="PO_Department">
+<offset>371</offset>
+<length>80</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1200" field="PO_Department"/>
+</functions>
+</node>
+<node type="field" order="13" name="Product_Category">
+<offset>375</offset>
+<length>80</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1200" field="Product_Category"/>
+</functions>
+</node>
+</node>
+<node type="record" name="OrderHeader_1210" level="2">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="2">
+<function type="Nextrow" exd="Exchange850" table="OrderHeader_1210"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey1"/>
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey2"/>
+</functions>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>1210</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="A2"/>
+</functions>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="HD2"/>
+</functions>
+</node>
+<node type="field" order="8" name="Global_Location_Number">
+<offset>101</offset>
+<length>80</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1210" field="Global_Location_Number"/>
+</functions>
+</node>
+<node type="field" order="9" name="Attribute6">
+<offset>181</offset>
+<length>80</length>
+</node>
+<node type="field" order="10" name="Attribute7">
+<offset>261</offset>
+<length>80</length>
+</node>
+<node type="field" order="11" name="Attribute8">
+<offset>341</offset>
+<length>80</length>
+</node>
+<node type="field" order="12" name="Attribute9">
+<offset>421</offset>
+<length>80</length>
+</node>
+</node>
+<node type="record" name="OrderHeader_1230" level="2">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="4">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Nextrow" exd="Exchange850" table="OrderHeader_1230"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1230" field="TP_Code"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1230" field="RefKey1"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>1230</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Defaultvalue" value="A2"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Defaultvalue" value="HD4"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="8" name="Global_Location_Number">
+<offset>101</offset>
+<length>80</length>
+</node>
+<node type="field" order="9" name="Attribute6">
+<offset>181</offset>
+<length>80</length>
+</node>
+<node type="field" order="10" name="Attribute7">
+<offset>261</offset>
+<length>80</length>
+</node>
+<node type="field" order="11" name="Attribute8">
+<offset>341</offset>
+<length>80</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1230" field="Attribute8"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="12" name="Attribute9">
+<offset>421</offset>
+<length>80</length>
+</node>
+</node>
+<node type="record" name="OrderHeader_1280" level="2">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="4">
+<function type="If" lvalue="@vCheck_1280" rvalue="1" operator="="/>
+<function type="Nextrow" exd="Exchange850" table="OrderHeader_1280"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1280" field="TP_Code"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vCheck_1280" rvalue="1" operator="="/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1280" field="RefKey1"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="3" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>1280</identifier>
+</node>
+<node type="field" order="4" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+<identifier>A1</identifier>
+</node>
+<node type="field" order="5" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+<identifier>GL1</identifier>
+</node>
+<node type="field" order="6" name="GLOBAL_Attribute_1">
+<offset>131</offset>
+<length>80</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vCheck_1280" rvalue="1" operator="="/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1280" field="GLOBAL_Attribute_1"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="7" name="GLOBAL_Attribute_2">
+<offset>211</offset>
+<length>80</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vCheck_1280" rvalue="1" operator="="/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1280" field="GLOBAL_Attribute_2"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="8" name="GLOBAL_Attribute_3">
+<offset>291</offset>
+<length>80</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vCheck_1280" rvalue="1" operator="="/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1280" field="GLOBAL_Attribute_3"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="9" name="GLOBAL_Attribute_4">
+<offset>371</offset>
+<length>80</length>
+</node>
+</node>
+<node type="record" name="OrderHeader_1290" level="2">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+</node>
+<node type="field" order="2" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>1290</identifier>
+</node>
+<node type="field" order="3" name="GLOBAL_Attribute_5">
+<offset>101</offset>
+<length>80</length>
+</node>
+<node type="field" order="4" name="GLOBAL_Attribute_6">
+<offset>181</offset>
+<length>80</length>
+</node>
+<node type="field" order="5" name="GLOBAL_Attribute_7">
+<offset>261</offset>
+<length>80</length>
+</node>
+<node type="field" order="6" name="GLOBAL_Attribute_8">
+<offset>341</offset>
+<length>80</length>
+</node>
+<node type="field" order="7" name="GLOBAL_Attribute_9">
+<offset>421</offset>
+<length>80</length>
+</node>
+</node>
+<node type="record" name="OrderHeader_1300" level="2">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+</node>
+<node type="field" order="2" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>1300</identifier>
+</node>
+<node type="field" order="3" name="GLOBAL_Attribute_10">
+<offset>101</offset>
+<length>80</length>
+</node>
+<node type="field" order="4" name="GLOBAL_Attribute_11">
+<offset>181</offset>
+<length>80</length>
+</node>
+<node type="field" order="5" name="GLOBAL_Attribute_12">
+<offset>261</offset>
+<length>80</length>
+</node>
+<node type="field" order="6" name="GLOBAL_Attribute_13">
+<offset>341</offset>
+<length>80</length>
+</node>
+</node>
+<node type="record" name="OrderHeader_1400" level="2">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="2">
+<function type="Nextrow" exd="Exchange850" table="OrderHeader_1400"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey1"/>
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey2"/>
+</functions>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>1400</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="AD"/>
+</functions>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="SLD"/>
+</functions>
+</node>
+<node type="field" order="8" name="Sold_To_Add_Code">
+<offset>101</offset>
+<length>60</length>
+</node>
+<node type="field" order="9" name="Sold_To_EDI_Loc_Code">
+<offset>161</offset>
+<length>35</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1400" field="Sold_To_EDI_Loc_Code"/>
+</functions>
+</node>
+<node type="field" order="10" name="Ship To Address Location Code">
+<offset>167</offset>
+<length>4</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1400" field="Ship To Address Location Code"/>
+</functions>
+</node>
+<node type="field" order="11" name="Sold_To_Add_Name">
+<offset>196</offset>
+<length>60</length>
+</node>
+<node type="field" order="12" name="Sold_To_Add1">
+<offset>256</offset>
+<length>35</length>
+</node>
+<node type="field" order="13" name="Sold_To_Add2">
+<offset>291</offset>
+<length>35</length>
+</node>
+<node type="field" order="14" name="Sold_To_Add3">
+<offset>326</offset>
+<length>35</length>
+</node>
+<node type="field" order="15" name="Sold_To_Add4">
+<offset>361</offset>
+<length>35</length>
+</node>
+<node type="field" order="16" name="Sold_To_City">
+<offset>396</offset>
+<length>30</length>
+</node>
+<node type="field" order="17" name="Sold_To_Postal_Code">
+<offset>426</offset>
+<length>15</length>
+</node>
+<node type="field" order="18" name="Sold_To_Country_Int">
+<offset>441</offset>
+<length>20</length>
+</node>
+<node type="field" order="19" name="Sold_To_Country_Ext1">
+<offset>461</offset>
+<length>3</length>
+</node>
+<node type="field" order="20" name="Sold_To_State_Int">
+<offset>464</offset>
+<length>20</length>
+</node>
+<node type="field" order="21" name="Sold_To_State_Ext1">
+<offset>484</offset>
+<length>10</length>
+</node>
+<node type="field" order="22" name="Sold_To_Province_Int">
+<offset>494</offset>
+<length>20</length>
+</node>
+<node type="field" order="23" name="Sold_To_Province_Ext1">
+<offset>514</offset>
+<length>10</length>
+</node>
+<node type="field" order="24" name="Sold_To_County">
+<offset>524</offset>
+<length>25</length>
+</node>
+<node type="field" order="25" name="Sold_To_Org">
+<offset>549</offset>
+<length>30</length>
+</node>
+</node>
+<node type="record" name="OrderHeader_1500" level="2">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="2">
+<function type="Nextrow" exd="Exchange850" table="OrderHeader_1500"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey1"/>
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey2"/>
+</functions>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>1500</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="AD"/>
+</functions>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="ST1"/>
+</functions>
+</node>
+<node type="field" order="8" name="Ship_To_Add_Code">
+<offset>101</offset>
+<length>60</length>
+</node>
+<node type="field" order="9" name="Ship_To_EDI_Loc_Code">
+<offset>161</offset>
+<length>35</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="TP_Translator_Code"/>
+</functions>
+</node>
+<node type="field" order="10" name="Ship To Address Location Code">
+<offset>167</offset>
+<length>4</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1500" field="Ship To Address Location Code"/>
+</functions>
+</node>
+<node type="field" order="11" name="Ship_To_Add_Name">
+<offset>196</offset>
+<length>60</length>
+</node>
+<node type="field" order="12" name="Ship_To_Add1">
+<offset>256</offset>
+<length>35</length>
+</node>
+<node type="field" order="13" name="Ship_To_Add2">
+<offset>291</offset>
+<length>35</length>
+</node>
+<node type="field" order="14" name="Ship_To_Add3">
+<offset>326</offset>
+<length>35</length>
+</node>
+<node type="field" order="15" name="Ship_To_Add4">
+<offset>361</offset>
+<length>35</length>
+</node>
+<node type="field" order="16" name="Ship_To_City">
+<offset>396</offset>
+<length>30</length>
+</node>
+<node type="field" order="17" name="Ship_To_Postal_Code">
+<offset>426</offset>
+<length>15</length>
+</node>
+<node type="field" order="18" name="Ship_To_Country_Int">
+<offset>441</offset>
+<length>20</length>
+</node>
+<node type="field" order="19" name="Ship_To_Country_Ext1">
+<offset>461</offset>
+<length>3</length>
+</node>
+<node type="field" order="20" name="Ship_To_State_Int">
+<offset>464</offset>
+<length>20</length>
+</node>
+<node type="field" order="21" name="Ship_To_State_Ext1">
+<offset>484</offset>
+<length>10</length>
+</node>
+<node type="field" order="22" name="Ship_To_Province_Int">
+<offset>494</offset>
+<length>20</length>
+</node>
+<node type="field" order="23" name="Ship_To_Province_Ext1">
+<offset>514</offset>
+<length>10</length>
+</node>
+<node type="field" order="24" name="Ship_To_County">
+<offset>524</offset>
+<length>25</length>
+</node>
+<node type="field" order="25" name="Ship_To_Org">
+<offset>549</offset>
+<length>30</length>
+</node>
+</node>
+<node type="record" name="OrderHeader_1610" level="2">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="4">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Nextrow" exd="Exchange850" table="OrderHeader_1610"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1610" field="TP_Code"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1610" field="RefKey1"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>1610</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Defaultvalue" value="NC"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Defaultvalue" value="NCA"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="8" name="Orig_Ship_Address_Ref">
+<offset>101</offset>
+<length>50</length>
+</node>
+<node type="field" order="9" name="Orig_Bill_Address_Ref">
+<offset>151</offset>
+<length>50</length>
+</node>
+<node type="field" order="10" name="Orig_Deliver_Address_Ref">
+<offset>201</offset>
+<length>50</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1610" field="Orig_Deliver_Address_Ref"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="11" name="Sold_To_Contact_Ref">
+<offset>251</offset>
+<length>50</length>
+</node>
+<node type="field" order="12" name="Ship_To-Contact_Ref">
+<offset>301</offset>
+<length>50</length>
+</node>
+<node type="field" order="13" name="Bill_To_Contact_Ref">
+<offset>351</offset>
+<length>50</length>
+</node>
+<node type="field" order="14" name="Deliver_To_Contact_Ref">
+<offset>401</offset>
+<length>50</length>
+</node>
+</node>
+<node type="record" name="OrderHeader_1950" level="2">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>1950</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+</node>
+<node type="field" order="8" name="Orgi_Sys_Document_Ref">
+<offset>101</offset>
+<length>50</length>
+</node>
+<node type="field" order="9" name="Change_Sequence">
+<offset>151</offset>
+<length>50</length>
+</node>
+<node type="field" order="10" name="Operation_Code">
+<offset>201</offset>
+<length>30</length>
+</node>
+<node type="field" order="11" name="Operation_Code_Ext">
+<offset>231</offset>
+<length>10</length>
+</node>
+<node type="field" order="12" name="Hold_Until_Date">
+<offset>241</offset>
+<length>15</length>
+</node>
+<node type="field" order="13" name="Hold_Type_Code">
+<offset>256</offset>
+<length>3</length>
+</node>
+<node type="field" order="14" name="Hold_Type_Code_Ext">
+<offset>259</offset>
+<length>28</length>
+</node>
+<node type="field" order="15" name="Release_Reason_Code">
+<offset>287</offset>
+<length>30</length>
+</node>
+<node type="field" order="16" name="Release_Reason_Code_Ext">
+<offset>317</offset>
+<length>30</length>
+</node>
+<node type="field" order="17" name="Comments">
+<offset>347</offset>
+<length>250</length>
+</node>
+<node type="field" order="18" name="Sold_to_Org_Id">
+<offset>587</offset>
+<length>22</length>
+</node>
+<node type="field" order="19" name="Sold_to_Org1">
+<offset>609</offset>
+<length>30</length>
+</node>
+<node type="field" order="20" name="Sold_to_Org2">
+<offset>639</offset>
+<length>30</length>
+</node>
+</node>
+<node type="record" name="OrderHeader_1992" level="2">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="4">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Nextrow" exd="Exchange850" table="OrderHeader_1992"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1992" field="TP_Code"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1992" field="RefKey1"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>1992</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Defaultvalue" value="NC"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Defaultvalue" value="NCC"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="8" name="Customer_Info_Type_Code">
+<offset>101</offset>
+<length>10</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Defaultvalue" value="ACCOUNT"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="9" name="Is_Ship_To_Address">
+<offset>111</offset>
+<length>1</length>
+</node>
+<node type="field" order="10" name="Is_Bill_To_Address">
+<offset>112</offset>
+<length>1</length>
+</node>
+<node type="field" order="11" name="Is_Deliver_To_Address">
+<offset>113</offset>
+<length>1</length>
+</node>
+<node type="field" order="12" name="Customer_Type">
+<offset>114</offset>
+<length>30</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Defaultvalue" value="PERSON"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="13" name="Customer_Number">
+<offset>144</offset>
+<length>22</length>
+</node>
+<node type="field" order="14" name="Customer_Info_Ref">
+<offset>166</offset>
+<length>50</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1992" field="RefKey1"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="15" name="Current_Customer_Number">
+<offset>216</offset>
+<length>22</length>
+</node>
+<node type="field" order="16" name="Current_Customer_Id">
+<offset>238</offset>
+<length>22</length>
+</node>
+<node type="field" order="17" name="Party_Number">
+<offset>260</offset>
+<length>30</length>
+</node>
+<node type="field" order="18" name="Parent_Customer_Ref">
+<offset>290</offset>
+<length>50</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1992" field="RefKey1"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="19" name="Org_Id">
+<offset>340</offset>
+<length>22</length>
+</node>
+</node>
+<node type="record" name="OrderHeader_1994" level="2">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="4">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Nextrow" exd="Exchange850" table="OrderHeader_1994"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1994" field="TP_Code"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1994" field="RefKey1"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>1994</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Defaultvalue" value="NC"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Defaultvalue" value="NCP"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="8" name="Organization_Name">
+<offset>101</offset>
+<length>130</length>
+</node>
+<node type="field" order="9" name="Person_Title">
+<offset>231</offset>
+<length>60</length>
+</node>
+<node type="field" order="10" name="Person_First_Name">
+<offset>291</offset>
+<length>150</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1994" field="Person_First_Name"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="11" name="Person_Middle_Name">
+<offset>441</offset>
+<length>60</length>
+</node>
+<node type="field" order="12" name="Person_Last_Name">
+<offset>501</offset>
+<length>150</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1994" field="Person_Last_Name"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="13" name="Person_Name_Suffix">
+<offset>651</offset>
+<length>30</length>
+</node>
+<node type="field" order="14" name="Phone_Country_Code">
+<offset>681</offset>
+<length>10</length>
+</node>
+<node type="field" order="15" name="Phone_Area_Code">
+<offset>691</offset>
+<length>10</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1994" field="Phone_Area_Code"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="16" name="Phone_Number">
+<offset>701</offset>
+<length>40</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_1994" field="Phone_Number"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="17" name="Phone_Extension">
+<offset>741</offset>
+<length>20</length>
+</node>
+<node type="field" order="18" name="Email_address">
+<offset>761</offset>
+<length>240</length>
+</node>
+</node>
+<node type="record" name="OrderHeaderCustomer_1992" level="2">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="4">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Nextrow" exd="Exchange850" table="OrderHeaderCustomer_1992"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeaderCustomer_1992" field="TP_Code"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeaderCustomer_1992" field="RefKey1"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>1992</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Defaultvalue" value="NC"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Defaultvalue" value="NCC"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="8" name="Customer_Info_Type_Code">
+<offset>101</offset>
+<length>10</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Defaultvalue" value="ADDRESS"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="9" name="Is_Ship_To_Address">
+<offset>111</offset>
+<length>1</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Defaultvalue" value="Y"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="10" name="Is_Bill_To_Address">
+<offset>112</offset>
+<length>1</length>
+</node>
+<node type="field" order="11" name="Is_Deliver_To_Address">
+<offset>113</offset>
+<length>1</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Defaultvalue" value="Y"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="12" name="Customer_Type">
+<offset>114</offset>
+<length>30</length>
+</node>
+<node type="field" order="13" name="Customer_Number">
+<offset>144</offset>
+<length>22</length>
+</node>
+<node type="field" order="14" name="Customer_Info_Ref">
+<offset>166</offset>
+<length>50</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeaderCustomer_1992" field="RefKey1"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="15" name="Current_Customer_Number">
+<offset>216</offset>
+<length>22</length>
+</node>
+<node type="field" order="16" name="Current_Customer_Id">
+<offset>238</offset>
+<length>22</length>
+</node>
+<node type="field" order="17" name="Party_Number">
+<offset>260</offset>
+<length>30</length>
+</node>
+<node type="field" order="18" name="Parent_Customer_Ref">
+<offset>290</offset>
+<length>50</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeaderCustomer_1992" field="Parent_Customer_Ref"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="19" name="Org_Id">
+<offset>340</offset>
+<length>22</length>
+</node>
+</node>
+<node type="record" name="OrderHeaderCustomer_1993" level="2">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="4">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Nextrow" exd="Exchange850" table="OrderHeaderCustomer_1993"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeaderCustomer_1993" field="TP_Code"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeaderCustomer_1993" field="RefKey1"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>1993</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Defaultvalue" value="NC"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Defaultvalue" value="NCA"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="8" name="Location_Number">
+<offset>101</offset>
+<length>40</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeaderCustomer_1993" field="Location_Number"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="9" name="EDI_Location_Code">
+<offset>141</offset>
+<length>35</length>
+</node>
+<node type="field" order="10" name="Name">
+<offset>176</offset>
+<length>60</length>
+</node>
+<node type="field" order="11" name="Address1">
+<offset>236</offset>
+<length>100</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeaderCustomer_1993" field="Address1"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="12" name="Address2">
+<offset>336</offset>
+<length>100</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeaderCustomer_1993" field="Address2"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="13" name="Address3">
+<offset>436</offset>
+<length>100</length>
+</node>
+<node type="field" order="14" name="Address4">
+<offset>536</offset>
+<length>100</length>
+</node>
+<node type="field" order="15" name="City">
+<offset>636</offset>
+<length>60</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeaderCustomer_1993" field="City"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="16" name="Postal_Code">
+<offset>696</offset>
+<length>30</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeaderCustomer_1993" field="Postal_Code"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="17" name="County">
+<offset>726</offset>
+<length>30</length>
+</node>
+<node type="field" order="18" name="County_Ext1">
+<offset>756</offset>
+<length>3</length>
+</node>
+<node type="field" order="19" name="State">
+<offset>759</offset>
+<length>60</length>
+</node>
+<node type="field" order="20" name="State_Ext1">
+<offset>819</offset>
+<length>10</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeaderCustomer_1993" field="State_Ext1"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="21" name="Province">
+<offset>829</offset>
+<length>60</length>
+</node>
+<node type="field" order="22" name="Province_Ext1">
+<offset>889</offset>
+<length>10</length>
+</node>
+<node type="field" order="23" name="Country">
+<offset>899</offset>
+<length>30</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID1" rvalue="1" operator="=" datatype="text"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeaderCustomer_1993" field="Country"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="24" name="Site_Number">
+<offset>929</offset>
+<length>80</length>
+</node>
+</node>
+<node type="record" name="OrderDetail_2000" level="2">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="2">
+<function type="Nextrow" exd="Exchange850" table="OrderDetail_2000"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey1"/>
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey2"/>
+</functions>
+</node>
+<node type="field" order="3" name="RefKey4">
+<offset>48</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderDetail_2000" field="CustomerLineNum"/>
+</functions>
+</node>
+<node type="field" order="4" name="RefKey2">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey3">
+<offset>92</offset>
+<length>4</length>
+<identifier>2000</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="IT"/>
+</functions>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="ITM"/>
+</functions>
+</node>
+<node type="field" order="8" name="CustomerLineNum">
+<offset>101</offset>
+<length>20</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderDetail_2000" field="CustomerLineNum"/>
+</functions>
+</node>
+<node type="field" order="9" name="LineNumber">
+<offset>121</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderDetail_2000" field="CustomerLineNum"/>
+</functions>
+</node>
+<node type="field" order="10" name="IglooItemNum">
+<offset>143</offset>
+<length>50</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderDetail_2000" field="IglooItemNum"/>
+</functions>
+</node>
+<node type="field" order="11" name="ItemRevision">
+<offset>193</offset>
+<length>3</length>
+</node>
+<node type="field" order="12" name="CustItemName">
+<offset>196</offset>
+<length>50</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderDetail_2000" field="CustItemName"/>
+</functions>
+</node>
+<node type="field" order="13" name="CustItemRevision">
+<offset>246</offset>
+<length>50</length>
+</node>
+<node type="field" order="14" name="CustItemIDType">
+<offset>296</offset>
+<length>30</length>
+</node>
+<node type="field" order="15" name="CustItemIDTypeExt1">
+<offset>326</offset>
+<length>10</length>
+</node>
+<node type="field" order="16" name="OrigSysDocRef">
+<offset>336</offset>
+<length>50</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderDetail_2000" field="OrigSysDocRef"/>
+</functions>
+</node>
+<node type="field" order="17" name="OrigSysLineRef">
+<offset>386</offset>
+<length>50</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderDetail_2000" field="CustomerLineNum"/>
+</functions>
+</node>
+<node type="record" name="OrderDetail_3000" level="3">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="2">
+<function type="Nextrow" exd="Exchange850" table="OrderDetail_3000"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey1"/>
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey2"/>
+</functions>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderDetail_2000" field="CustomerLineNum"/>
+</functions>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>3000</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="LN"/>
+</functions>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="LN1"/>
+</functions>
+</node>
+<node type="field" order="8" name="CalcPriceFlag">
+<offset>101</offset>
+<length>1</length>
+</node>
+<node type="field" order="9" name="PriceQuant">
+<offset>102</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderDetail_3000" field="PriceQuant"/>
+</functions>
+</node>
+<node type="field" order="10" name="PriceQuantUOM">
+<offset>124</offset>
+<length>3</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderDetail_3000" field="PriceQuantUOM"/>
+</functions>
+</node>
+<node type="field" order="11" name="PriceQuantUOExt1">
+<offset>127</offset>
+<length>10</length>
+</node>
+<node type="field" order="12" name="CustItemNetPrice">
+<offset>137</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderDetail_3000" field="CustItemNetPrice"/>
+</functions>
+</node>
+<node type="field" order="13" name="UnitListPrice">
+<offset>159</offset>
+<length>22</length>
+</node>
+<node type="field" order="14" name="UnitSellingPrice">
+<offset>181</offset>
+<length>22</length>
+</node>
+<node type="field" order="15" name="UnitPerBasePrice">
+<offset>203</offset>
+<length>22</length>
+</node>
+<node type="field" order="16" name="UnitSellingPerc">
+<offset>225</offset>
+<length>22</length>
+</node>
+<node type="field" order="17" name="UnitListPerc">
+<offset>247</offset>
+<length>22</length>
+</node>
+<node type="field" order="18" name="PricingDate">
+<offset>269</offset>
+<length>8</length>
+</node>
+<node type="field" order="19" name="Filler">
+<offset>277</offset>
+<length>1</length>
+</node>
+<node type="field" order="20" name="PricingTime">
+<offset>278</offset>
+<length>6</length>
+</node>
+<node type="field" order="21" name="PriceList">
+<offset>284</offset>
+<length>30</length>
+</node>
+<node type="field" order="22" name="PriceListExt1">
+<offset>314</offset>
+<length>30</length>
+</node>
+<node type="field" order="23" name="Agreement">
+<offset>344</offset>
+<length>30</length>
+</node>
+<node type="field" order="24" name="EndItemUnitNum">
+<offset>374</offset>
+<length>30</length>
+</node>
+<node type="field" order="25" name="SourceTypeCode">
+<offset>404</offset>
+<length>30</length>
+</node>
+<node type="field" order="26" name="OptionFlag">
+<offset>434</offset>
+<length>1</length>
+</node>
+<node type="field" order="27" name="TopModelLineRef">
+<offset>435</offset>
+<length>50</length>
+</node>
+<node type="field" order="28" name="LinkToLineRef">
+<offset>485</offset>
+<length>50</length>
+</node>
+<node type="field" order="29" name="ModelGroupNum">
+<offset>535</offset>
+<length>22</length>
+</node>
+<node type="field" order="30" name="OptionNum">
+<offset>557</offset>
+<length>22</length>
+</node>
+<node type="field" order="31" name="ComponentCode">
+<offset>579</offset>
+<length>50</length>
+</node>
+<node type="field" order="32" name="SortOrder">
+<offset>629</offset>
+<length>240</length>
+</node>
+</node>
+<node type="record" name="OrderItem_4000" level="3">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="2">
+<function type="Nextrow" exd="Exchange850" table="OrderItem_4000"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey1"/>
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey2"/>
+</functions>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderDetail_2000" field="CustomerLineNum"/>
+</functions>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>4000</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="DT"/>
+</functions>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="QTY"/>
+</functions>
+</node>
+<node type="field" order="8" name="Ship_Model_Complete">
+<offset>101</offset>
+<length>1</length>
+</node>
+<node type="field" order="9" name="Authorized_To_Ship_Flag">
+<offset>102</offset>
+<length>1</length>
+</node>
+<node type="field" order="10" name="Shipment_Number">
+<offset>103</offset>
+<length>22</length>
+</node>
+<node type="field" order="11" name="Customer_Shipment_No">
+<offset>125</offset>
+<length>10</length>
+</node>
+<node type="field" order="12" name="Orig_Sys_Shipment_Ref">
+<offset>135</offset>
+<length>50</length>
+</node>
+<node type="field" order="13" name="Request_Date">
+<offset>185</offset>
+<length>8</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4000" field="Request_Date"/>
+</functions>
+</node>
+<node type="field" order="14" name="Req_Date_Filler">
+<offset>193</offset>
+<length>1</length>
+</node>
+<node type="field" order="15" name="Req_Date_Time">
+<offset>194</offset>
+<length>6</length>
+</node>
+<node type="field" order="16" name="Schedule_ArrivalQ_Date">
+<offset>200</offset>
+<length>8</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4000" field="Schedule_ArrivalQ_Date"/>
+</functions>
+</node>
+<node type="field" order="17" name="Sched_Date_Filler">
+<offset>208</offset>
+<length>1</length>
+</node>
+<node type="field" order="18" name="Sched_Date_Time">
+<offset>209</offset>
+<length>6</length>
+</node>
+<node type="field" order="19" name="Sched_Ship_Date">
+<offset>215</offset>
+<length>8</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4000" field="Request_Date"/>
+</functions>
+</node>
+<node type="field" order="20" name="Sched_Ship_Date_Filler">
+<offset>223</offset>
+<length>1</length>
+</node>
+<node type="field" order="21" name="Sched_Ship_Date_Time">
+<offset>224</offset>
+<length>6</length>
+</node>
+<node type="field" order="22" name="Promise_Date">
+<offset>230</offset>
+<length>8</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4000" field="Promise_Date1"/>
+</functions>
+</node>
+<node type="field" order="23" name="Promise_Date_Filler">
+<offset>238</offset>
+<length>1</length>
+</node>
+<node type="field" order="24" name="Promise_Date_Time">
+<offset>239</offset>
+<length>6</length>
+</node>
+<node type="field" order="25" name="Ordered_Quantity">
+<offset>245</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4000" field="Ordered_Quantity"/>
+</functions>
+</node>
+<node type="field" order="26" name="Order_Quantitiy_UOM">
+<offset>267</offset>
+<length>3</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4000" field="Order_Quantitiy_UOM"/>
+</functions>
+</node>
+<node type="field" order="27" name="Order_Quantitiy_UOM_Ext1">
+<offset>270</offset>
+<length>10</length>
+</node>
+<node type="field" order="28" name="Ordered_Quantity2">
+<offset>280</offset>
+<length>15</length>
+</node>
+<node type="field" order="29" name="Ordered_Quantity_UOM2">
+<offset>295</offset>
+<length>3</length>
+</node>
+<node type="field" order="30" name="Ordered_Qty_UOM2_Ext1">
+<offset>298</offset>
+<length>10</length>
+</node>
+<node type="field" order="31" name="Shipped_Quantity">
+<offset>308</offset>
+<length>22</length>
+</node>
+<node type="field" order="32" name="Shipped_Quantity2">
+<offset>330</offset>
+<length>22</length>
+</node>
+<node type="field" order="33" name="Reference_Header">
+<offset>352</offset>
+<length>30</length>
+</node>
+<node type="field" order="34" name="Reference_Line">
+<offset>382</offset>
+<length>30</length>
+</node>
+<node type="field" order="35" name="Reference_Type">
+<offset>412</offset>
+<length>30</length>
+</node>
+<node type="field" order="36" name="Cust_Model_Serial_Number">
+<offset>442</offset>
+<length>50</length>
+</node>
+<node type="field" order="37" name="SalesRep">
+<offset>492</offset>
+<length>30</length>
+</node>
+</node>
+<node type="record" name="OrderItem_4010" level="3">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="2">
+<function type="Nextrow" exd="Exchange850" table="OrderItem_4010"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey1"/>
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey2"/>
+</functions>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderDetail_2000" field="CustomerLineNum"/>
+</functions>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>4010</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="NT"/>
+</functions>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="NTE"/>
+</functions>
+</node>
+<node type="field" order="8" name="ShippingInstructions">
+<offset>101</offset>
+<length>240</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4010" field="ShippingInstructions"/>
+</functions>
+</node>
+<node type="field" order="9" name="Packing Instructions">
+<offset>341</offset>
+<length>240</length>
+</node>
+<node type="field" order="10" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+</node>
+<node type="field" order="11" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+</node>
+<node type="field" order="12" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+</node>
+<node type="field" order="13" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="14" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+</node>
+<node type="field" order="15" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+</node>
+<node type="field" order="16" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+</node>
+<node type="field" order="17" name="Line_PO_Context">
+<offset>101</offset>
+<length>30</length>
+</node>
+<node type="field" order="18" name="ReleasedToShipping">
+<offset>211</offset>
+<length>80</length>
+</node>
+</node>
+<node type="record" name="OrderItem_4200" level="3">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="2">
+<function type="Nextrow" exd="Exchange850" table="OrderItem_4200"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey1"/>
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey2"/>
+</functions>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderDetail_2000" field="CustomerLineNum"/>
+</functions>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>4200</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="A1"/>
+</functions>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="IT1"/>
+</functions>
+</node>
+<node type="field" order="8" name="Line_PO_Context">
+<offset>101</offset>
+<length>30</length>
+</node>
+<node type="field" order="9" name="UPC_Number">
+<offset>131</offset>
+<length>80</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4200" field="UPC_Number"/>
+</functions>
+</node>
+<node type="field" order="10" name="ReleasedToShipping">
+<offset>211</offset>
+<length>80</length>
+</node>
+<node type="field" order="11" name="CustomerItemNumber">
+<offset>291</offset>
+<length>80</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4200" field="CustomerItemNumber"/>
+</functions>
+</node>
+<node type="field" order="12" name="GTIN">
+<offset>371</offset>
+<length>80</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4200" field="GTIN"/>
+</functions>
+</node>
+</node>
+<node type="record" name="OrderItem_4210" level="3">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="2">
+<function type="Nextrow" exd="Exchange850" table="OrderItem_4210"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey1"/>
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey2"/>
+</functions>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderDetail_2000" field="CustomerLineNum"/>
+</functions>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>4210</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="A2"/>
+</functions>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="IT2"/>
+</functions>
+</node>
+<node type="field" order="8" name="Item_Des">
+<offset>101</offset>
+<length>80</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4210" field="Item_Description"/>
+</functions>
+</node>
+<node type="field" order="9" name="RRC">
+<offset>181</offset>
+<length>80</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4210" field="RRC"/>
+</functions>
+</node>
+<node type="field" order="10" name="Product Item Number">
+<offset>261</offset>
+<length>100</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4210" field="ProductItemNumber"/>
+</functions>
+</node>
+<node type="field" order="11" name="PID">
+<offset>371</offset>
+<length>80</length>
+</node>
+<node type="field" order="12" name="Attribute6">
+<offset>371</offset>
+<length>80</length>
+</node>
+<node type="field" order="13" name="Attribute7">
+<offset>371</offset>
+<length>80</length>
+</node>
+<node type="field" order="14" name="Attribute8">
+<offset>371</offset>
+<length>80</length>
+</node>
+<node type="field" order="15" name="Attribute9">
+<offset>371</offset>
+<length>80</length>
+</node>
+</node>
+<node type="record" name="OrderItem_4220" level="3">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="2">
+<function type="Nextrow" exd="Exchange850" table="OrderItem_4220"/>
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4220" field="TP_Code"/>
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey2"/>
+</functions>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4220" field="RefKey2"/>
+</functions>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>4220</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="A2"/>
+</functions>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="IT3"/>
+</functions>
+</node>
+<node type="field" order="8" name="Attribute10">
+<offset>106</offset>
+<length>80</length>
+</node>
+<node type="field" order="9" name="Attribute11">
+<offset>186</offset>
+<length>80</length>
+</node>
+<node type="field" order="10" name="Attribute12">
+<offset>266</offset>
+<length>80</length>
+</node>
+<node type="field" order="11" name="Attribute13">
+<offset>346</offset>
+<length>80</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4220" field="Attribute13"/>
+</functions>
+</node>
+<node type="field" order="12" name="Attribute14">
+<offset>426</offset>
+<length>80</length>
+</node>
+</node>
+<node type="record" name="OrderItem_4230" level="3">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="2">
+<function type="Nextrow" exd="Exchange850" table="OrderItem_4230"/>
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4230" field="TP_Code"/>
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey2"/>
+</functions>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4230" field="RefKey2"/>
+</functions>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>4230</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="A2"/>
+</functions>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+<functions FunctionCount="1">
+<function type="Defaultvalue" value="IT4"/>
+</functions>
+</node>
+<node type="field" order="8" name="Attribute15">
+<offset>101</offset>
+<length>80</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4230" field="Attribute15"/>
+</functions>
+</node>
+<node type="field" order="9" name="Attribute16">
+<offset>181</offset>
+<length>80</length>
+</node>
+<node type="field" order="10" name="Attribute17">
+<offset>261</offset>
+<length>80</length>
+</node>
+<node type="field" order="11" name="Attribute18">
+<offset>341</offset>
+<length>80</length>
+</node>
+<node type="field" order="12" name="Attribute19">
+<offset>421</offset>
+<length>80</length>
+</node>
+</node>
+<node type="record" name="OrderItem_4300" level="3">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="2">
+<function type="Nextrow" exd="Exchange850" table="OrderItem_4300"/>
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4300" field="TP_Code"/>
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey2"/>
+</functions>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4300" field="RefKey2"/>
+</functions>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>4300</identifier>
+</node>
+<node type="field" order="6" name="INDUSTRY_Attribute_4">
+<offset>371</offset>
+<length>80</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4300" field="INDUSTRY_Attribute_4"/>
+</functions>
+</node>
+</node>
+<node type="record" name="OrderItem_4310" level="3">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="2">
+<function type="Nextrow" exd="Exchange850" table="OrderItem_4310"/>
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4310" field="TP_Code"/>
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey2"/>
+</functions>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4310" field="RefKey2"/>
+</functions>
+</node>
+<node type="field" order="4" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>4310</identifier>
+</node>
+<node type="field" order="5" name="OH_GLOBAL_ATTRIBUTE5">
+<offset>101</offset>
+<length>80</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4310" field="OH_GLOBAL_ATTRIBUTE5"/>
+</functions>
+</node>
+<node type="field" order="6" name="OH_GLOBAL_ATTRIBUTE6">
+<offset>181</offset>
+<length>80</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4310" field="OH_GLOBAL_ATTRIBUTE6"/>
+</functions>
+</node>
+<node type="field" order="7" name="OH_GLOBAL_ATTRIBUTE7">
+<offset>261</offset>
+<length>80</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4310" field="OH_GLOBAL_ATTRIBUTE7"/>
+</functions>
+</node>
+<node type="field" order="8" name="OH_GLOBAL_ATTRIBUTE8">
+<offset>341</offset>
+<length>80</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4310" field="OH_GLOBAL_ATTRIBUTE8"/>
+</functions>
+</node>
+<node type="field" order="9" name="OH_GLOBAL_ATTRIBUTE9">
+<offset>421</offset>
+<length>80</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4310" field="OH_GLOBAL_ATTRIBUTE9"/>
+</functions>
+</node>
+</node>
+<node type="record" name="OrderItem_4320" level="3">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="2">
+<function type="Nextrow" exd="Exchange850" table="OrderItem_4320"/>
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4320" field="TP_Code"/>
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey2"/>
+</functions>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4320" field="RefKey2"/>
+</functions>
+</node>
+<node type="field" order="4" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>4320</identifier>
+</node>
+<node type="field" order="5" name="OH_GLOBAL_ATTRIBUTE10">
+<offset>101</offset>
+<length>80</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4320" field="OH_GLOBAL_ATTRIBUTE10"/>
+</functions>
+</node>
+<node type="field" order="6" name="OH_GLOBAL_ATTRIBUTE11">
+<offset>181</offset>
+<length>80</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4320" field="OH_GLOBAL_ATTRIBUTE11"/>
+</functions>
+</node>
+<node type="field" order="7" name="OH_GLOBAL_ATTRIBUTE12">
+<offset>261</offset>
+<length>80</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4320" field="OH_GLOBAL_ATTRIBUTE12"/>
+</functions>
+</node>
+<node type="field" order="8" name="OH_GLOBAL_ATTRIBUTE13">
+<offset>341</offset>
+<length>80</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4320" field="OH_GLOBAL_ATTRIBUTE13"/>
+</functions>
+</node>
+<node type="field" order="9" name="OH_GLOBAL_ATTRIBUTE14">
+<offset>421</offset>
+<length>80</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4320" field="OH_GLOBAL_ATTRIBUTE14"/>
+</functions>
+</node>
+</node>
+<node type="record" name="OrderItem_4500" level="3">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="10">
+<function type="If" lvalue="@vA103_4500" rvalue="" operator="!="/>
+<function type="OrIf" lvalue="@vA109_4500" rvalue="" operator="!="/>
+<function type="OrIf" lvalue="@vA115_4500" rvalue="" operator="!="/>
+<function type="Setvariable" name="vReciverID4500" value="21" datatype="Text"/>
+<function type="EndIf" />
+<function type="If" lvalue="@vReciverID4500" rvalue="21" operator="=" datatype="text"/>
+<function type="OrIf" lvalue="@vCheck_4500" rvalue="" operator="!="/>
+<function type="Nextrow" exd="Exchange850" table="OrderItem_4500"/>
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4500" field="TP_Code"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="4">
+<function type="If" lvalue="@vReciverID4500" rvalue="21" operator="=" datatype="text"/>
+<function type="OrIf" lvalue="@vCheck_4500" rvalue="" operator="!="/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey2"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+<functions FunctionCount="4">
+<function type="If" lvalue="@vReciverID4500" rvalue="21" operator="=" datatype="text"/>
+<function type="OrIf" lvalue="@vCheck_4500" rvalue="" operator="!="/>
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4500" field="RefKey2"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>4500</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+<functions FunctionCount="4">
+<function type="If" lvalue="@vReciverID4500" rvalue="21" operator="=" datatype="text"/>
+<function type="OrIf" lvalue="@vCheck_4500" rvalue="" operator="!="/>
+<function type="Defaultvalue" value="A1"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+<functions FunctionCount="4">
+<function type="If" lvalue="@vReciverID4500" rvalue="21" operator="=" datatype="text"/>
+<function type="OrIf" lvalue="@vCheck_4500" rvalue="" operator="!="/>
+<function type="Defaultvalue" value="IN1"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="8" name="INDUSTRY_Context">
+<offset>101</offset>
+<length>30</length>
+</node>
+<node type="field" order="9" name="INDUSTRY_Attribute_1">
+<offset>131</offset>
+<length>80</length>
+<functions FunctionCount="4">
+<function type="If" lvalue="@vReciverID4500" rvalue="21" operator="=" datatype="text"/>
+<function type="OrIf" lvalue="@vCheck_4500" rvalue="" operator="!="/>
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4500" field="INDUSTRY_Attribute_1"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="10" name="INDUSTRY_Attribute_2">
+<offset>211</offset>
+<length>80</length>
+<functions FunctionCount="4">
+<function type="If" lvalue="@vReciverID4500" rvalue="21" operator="=" datatype="text"/>
+<function type="OrIf" lvalue="@vCheck_4500" rvalue="" operator="!="/>
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4500" field="INDUSTRY_Attribute_2"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="11" name="INDUSTRY_Attribute_3">
+<offset>291</offset>
+<length>80</length>
+<functions FunctionCount="4">
+<function type="If" lvalue="@vReciverID4500" rvalue="21" operator="=" datatype="text"/>
+<function type="OrIf" lvalue="@vCheck_4500" rvalue="" operator="!="/>
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4500" field="INDUSTRY_Attribute_3"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="12" name="INDUSTRY_Attribute_4">
+<offset>371</offset>
+<length>80</length>
+<functions FunctionCount="4">
+<function type="If" lvalue="@vReciverID4500" rvalue="21" operator="=" datatype="text"/>
+<function type="OrIf" lvalue="@vCheck_4500" rvalue="" operator="!="/>
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4500" field="INDUSTRY_Attribute_4"/>
+<function type="EndIf" />
+</functions>
+</node>
+</node>
+<node type="record" name="OrderItem_4510" level="3">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="5">
+<function type="If" lvalue="@vReciverID4500" rvalue="21" operator="=" datatype="text"/>
+<function type="OrIf" lvalue="@vCheck_4510" rvalue="" operator="!="/>
+<function type="Nextrow" exd="Exchange850" table="OrderItem_4510"/>
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4510" field="TP_Code"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="4">
+<function type="If" lvalue="@vReciverID4500" rvalue="21" operator="=" datatype="text"/>
+<function type="OrIf" lvalue="@vCheck_4510" rvalue="" operator="!="/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey2"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+<functions FunctionCount="4">
+<function type="If" lvalue="@vReciverID4500" rvalue="21" operator="=" datatype="text"/>
+<function type="OrIf" lvalue="@vCheck_4510" rvalue="" operator="!="/>
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4510" field="RefKey2"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>4510</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+<functions FunctionCount="4">
+<function type="If" lvalue="@vReciverID4500" rvalue="21" operator="=" datatype="text"/>
+<function type="OrIf" lvalue="@vCheck_4510" rvalue="" operator="!="/>
+<function type="Defaultvalue" value="A2"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+<functions FunctionCount="4">
+<function type="If" lvalue="@vReciverID4500" rvalue="21" operator="=" datatype="text"/>
+<function type="OrIf" lvalue="@vCheck_4510" rvalue="" operator="!="/>
+<function type="Defaultvalue" value="IN2"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="8" name="INDUSTRY_Attribute5">
+<offset>101</offset>
+<length>80</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="vCheck_4510" rvalue="" operator="!="/>
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4510" field="INDUSTRY_Attribute5"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="9" name="INDUSTRY_Attribute6">
+<offset>181</offset>
+<length>80</length>
+<functions FunctionCount="4">
+<function type="If" lvalue="@vReciverID4500" rvalue="21" operator="=" datatype="text"/>
+<function type="OrIf" lvalue="@vCheck_4510" rvalue="" operator="!="/>
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4510" field="INDUSTRY_Attribute6"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="10" name="INDUSTRY_Attribute7">
+<offset>261</offset>
+<length>80</length>
+<functions FunctionCount="4">
+<function type="If" lvalue="@vReciverID4500" rvalue="21" operator="=" datatype="text"/>
+<function type="OrIf" lvalue="@vCheck_4510" rvalue="" operator="!="/>
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4510" field="INDUSTRY_Attribute7"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="11" name="INDUSTRY_Attribute8">
+<offset>341</offset>
+<length>80</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderItem_4510" field="INDUSTRY_Attribute8"/>
+</functions>
+</node>
+<node type="field" order="12" name="INDUSTRY_Attribute9">
+<offset>421</offset>
+<length>80</length>
+</node>
+</node>
+<node type="record" name="OrderHeader_4800" level="3">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+<functions FunctionCount="8">
+<function type="Lookup" filename="@vLookup" section="4800" casesensitive="False" load="True" key="@vOracleNo"/>
+<function type="Setvariable" name="vReciverID4800"/>
+<function type="If" lvalue="@vOracleNo" rvalue="@vReciverID4800" operator="!=" datatype="text"/>
+<function type="Nextrow" exd="Exchange850" table="OrderHeader_4800"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_4800" field="TP_Code"/>
+<function type="Else" />
+<function type="Fixedvalue" value=""/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID4800" rvalue="@vOracleNo" operator="!=" datatype="text"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="RefKey2"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID4800" rvalue="@vOracleNo" operator="!=" datatype="text"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_4800" field="RefKey2"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>4800</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID4800" rvalue="@vOracleNo" operator="!=" datatype="text"/>
+<function type="Defaultvalue" value="AD"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID4800" rvalue="@vOracleNo" operator="!=" datatype="text"/>
+<function type="Defaultvalue" value="ST1"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="8" name="Record_ID">
+<offset>101</offset>
+<length>60</length>
+</node>
+<node type="field" order="9" name="Ship_To_EDI_Loc_Code3">
+<offset>161</offset>
+<length>35</length>
+<functions FunctionCount="3">
+<function type="If" lvalue="@vReciverID4800" rvalue="@vOracleNo" operator="!=" datatype="text"/>
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_0010" field="TP_Translator_Code"/>
+<function type="EndIf" />
+</functions>
+</node>
+<node type="field" order="10" name="Ship To Address Location Code">
+<offset>167</offset>
+<length>4</length>
+<functions FunctionCount="1">
+<function type="Getvalue" exd="Exchange850" table="OrderHeader_4800" field="Ship To Address Location Code"/>
+</functions>
+</node>
+<node type="field" order="11" name="Ship_To_Add_Name">
+<offset>196</offset>
+<length>60</length>
+</node>
+<node type="field" order="12" name="Ship_To_Add1">
+<offset>256</offset>
+<length>35</length>
+</node>
+<node type="field" order="13" name="Ship_To_Add2">
+<offset>291</offset>
+<length>35</length>
+</node>
+<node type="field" order="14" name="Ship_To_Add3">
+<offset>326</offset>
+<length>35</length>
+</node>
+<node type="field" order="15" name="Ship_To_Add4">
+<offset>361</offset>
+<length>35</length>
+</node>
+<node type="field" order="16" name="Ship_To_City">
+<offset>396</offset>
+<length>30</length>
+</node>
+<node type="field" order="17" name="Ship_To_Postal_Code">
+<offset>426</offset>
+<length>15</length>
+</node>
+<node type="field" order="18" name="Ship_To_Country_Int">
+<offset>441</offset>
+<length>20</length>
+</node>
+<node type="field" order="19" name="Ship_To_Country_Ext1">
+<offset>461</offset>
+<length>3</length>
+</node>
+<node type="field" order="20" name="Ship_To_State_Int">
+<offset>464</offset>
+<length>20</length>
+</node>
+<node type="field" order="21" name="Ship_To_State_Ext1">
+<offset>484</offset>
+<length>10</length>
+</node>
+<node type="field" order="22" name="Ship_To_Province_Int">
+<offset>494</offset>
+<length>20</length>
+</node>
+<node type="field" order="23" name="Ship_To_Province_Ext1">
+<offset>514</offset>
+<length>10</length>
+</node>
+<node type="field" order="24" name="Ship_To_County">
+<offset>524</offset>
+<length>25</length>
+</node>
+<node type="field" order="25" name="Ship_To_Org">
+<offset>549</offset>
+<length>30</length>
+</node>
+<node type="field" order="26" name="Customer_Dock">
+<offset>579</offset>
+<length>30</length>
+</node>
+<node type="field" order="27" name="Cust_Dock_Code_Int">
+<offset>609</offset>
+<length>30</length>
+</node>
+<node type="field" order="28" name="Cust_Dock_Code_Ext1">
+<offset>639</offset>
+<length>15</length>
+</node>
+<node type="field" order="29" name="Load_Seq_Number">
+<offset>654</offset>
+<length>30</length>
+</node>
+<node type="field" order="30" name="Customer_Production_Line">
+<offset>684</offset>
+<length>30</length>
+</node>
+</node>
+<node type="record" name="OrderCustomer_9202" level="3">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>9202</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+</node>
+<node type="field" order="8" name="Customer_Info_Type_Code">
+<offset>101</offset>
+<length>10</length>
+</node>
+<node type="field" order="9" name="Is_Ship_To_Address">
+<offset>111</offset>
+<length>1</length>
+</node>
+<node type="field" order="10" name="Is_Bill_To_Address">
+<offset>112</offset>
+<length>1</length>
+</node>
+<node type="field" order="11" name="Is_Deliver_To_Address">
+<offset>113</offset>
+<length>1</length>
+</node>
+<node type="field" order="12" name="Customer_Type">
+<offset>114</offset>
+<length>30</length>
+</node>
+<node type="field" order="13" name="Customer_Number">
+<offset>144</offset>
+<length>22</length>
+</node>
+<node type="field" order="14" name="Customer_Info_Ref">
+<offset>166</offset>
+<length>50</length>
+</node>
+<node type="field" order="15" name="Current_Customer_Number">
+<offset>216</offset>
+<length>22</length>
+</node>
+<node type="field" order="16" name="Current_Customer_Id">
+<offset>238</offset>
+<length>22</length>
+</node>
+<node type="field" order="17" name="Party_Number">
+<offset>260</offset>
+<length>30</length>
+</node>
+<node type="field" order="18" name="Parent_Customer_Ref">
+<offset>290</offset>
+<length>50</length>
+</node>
+<node type="field" order="19" name="Org_Id">
+<offset>340</offset>
+<length>22</length>
+</node>
+</node>
+<node type="record" name="OrderCustomer_9204" level="3">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>9204</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+</node>
+<node type="field" order="8" name="Organization_Name">
+<offset>101</offset>
+<length>130</length>
+</node>
+<node type="field" order="9" name="Person_Title">
+<offset>231</offset>
+<length>60</length>
+</node>
+<node type="field" order="10" name="Person_First_Name">
+<offset>291</offset>
+<length>150</length>
+</node>
+<node type="field" order="11" name="Person_Middle_Name">
+<offset>441</offset>
+<length>60</length>
+</node>
+<node type="field" order="12" name="Person_Last_Name">
+<offset>501</offset>
+<length>150</length>
+</node>
+<node type="field" order="13" name="Person_Name_Suffix">
+<offset>651</offset>
+<length>30</length>
+</node>
+<node type="field" order="14" name="Phone_Country_Code">
+<offset>681</offset>
+<length>10</length>
+</node>
+<node type="field" order="15" name="Phone_Area_Code">
+<offset>691</offset>
+<length>10</length>
+</node>
+<node type="field" order="16" name="Phone_Number">
+<offset>701</offset>
+<length>40</length>
+</node>
+<node type="field" order="17" name="Phone_Extension">
+<offset>741</offset>
+<length>20</length>
+</node>
+<node type="field" order="18" name="Email_address">
+<offset>761</offset>
+<length>240</length>
+</node>
+</node>
+<node type="record" name="OrderCustomer_9202_ADDRESS" level="3">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>9202</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+</node>
+<node type="field" order="8" name="Customer_Info_Type_Code">
+<offset>101</offset>
+<length>10</length>
+</node>
+<node type="field" order="9" name="Is_Ship_To_Address">
+<offset>111</offset>
+<length>1</length>
+</node>
+<node type="field" order="10" name="Is_Bill_To_Address">
+<offset>112</offset>
+<length>1</length>
+</node>
+<node type="field" order="11" name="Is_Deliver_To_Address">
+<offset>113</offset>
+<length>1</length>
+</node>
+<node type="field" order="12" name="Customer_Type">
+<offset>114</offset>
+<length>30</length>
+</node>
+<node type="field" order="13" name="Customer_Number">
+<offset>144</offset>
+<length>22</length>
+</node>
+<node type="field" order="14" name="Customer_Info_Ref">
+<offset>166</offset>
+<length>50</length>
+</node>
+<node type="field" order="15" name="Current_Customer_Number">
+<offset>216</offset>
+<length>22</length>
+</node>
+<node type="field" order="16" name="Current_Customer_Id">
+<offset>238</offset>
+<length>22</length>
+</node>
+<node type="field" order="17" name="Party_Number">
+<offset>260</offset>
+<length>30</length>
+</node>
+<node type="field" order="18" name="Parent_Customer_Ref">
+<offset>290</offset>
+<length>50</length>
+</node>
+<node type="field" order="19" name="Org_Id">
+<offset>340</offset>
+<length>22</length>
+</node>
+<node type="field" order="20" name="Org_Id">
+<offset>340</offset>
+<length>22</length>
+</node>
+</node>
+<node type="record" name="OrderCustomer_9203" level="3">
+<node type="field" order="1" name="TP_Code">
+<offset>1</offset>
+<length>25</length>
+</node>
+<node type="field" order="2" name="RefKey1">
+<offset>26</offset>
+<length>22</length>
+</node>
+<node type="field" order="3" name="RefKey2">
+<offset>48</offset>
+<length>22</length>
+</node>
+<node type="field" order="4" name="RefKey3">
+<offset>70</offset>
+<length>22</length>
+</node>
+<node type="field" order="5" name="RefKey4">
+<offset>92</offset>
+<length>4</length>
+<identifier>9203</identifier>
+</node>
+<node type="field" order="6" name="Record_Layout">
+<offset>96</offset>
+<length>2</length>
+</node>
+<node type="field" order="7" name="Record_Qualifier">
+<offset>98</offset>
+<length>3</length>
+</node>
+<node type="field" order="8" name="Location_Number">
+<offset>101</offset>
+<length>40</length>
+</node>
+<node type="field" order="9" name="EDI_Location_Code">
+<offset>141</offset>
+<length>35</length>
+</node>
+<node type="field" order="10" name="Name">
+<offset>176</offset>
+<length>60</length>
+</node>
+<node type="field" order="11" name="Address1">
+<offset>236</offset>
+<length>100</length>
+</node>
+<node type="field" order="12" name="Address2">
+<offset>336</offset>
+<length>100</length>
+</node>
+<node type="field" order="13" name="Address3">
+<offset>436</offset>
+<length>100</length>
+</node>
+<node type="field" order="14" name="Address4">
+<offset>536</offset>
+<length>100</length>
+</node>
+<node type="field" order="15" name="City">
+<offset>636</offset>
+<length>60</length>
+</node>
+<node type="field" order="16" name="Postal_Code">
+<offset>696</offset>
+<length>30</length>
+</node>
+<node type="field" order="17" name="County">
+<offset>726</offset>
+<length>30</length>
+</node>
+<node type="field" order="18" name="County_Ext1">
+<offset>756</offset>
+<length>3</length>
+</node>
+<node type="field" order="19" name="State">
+<offset>759</offset>
+<length>60</length>
+</node>
+<node type="field" order="20" name="State_Ext1">
+<offset>819</offset>
+<length>10</length>
+</node>
+<node type="field" order="21" name="Province">
+<offset>829</offset>
+<length>60</length>
+</node>
+<node type="field" order="22" name="Province_Ext1">
+<offset>889</offset>
+<length>10</length>
+</node>
+<node type="field" order="23" name="Country">
+<offset>899</offset>
+<length>30</length>
+</node>
+<node type="field" order="24" name="Site_Number">
+<offset>929</offset>
+<length>80</length>
+</node>
+</node>
+</node>
+</node>
+</doc>
+</xmap>

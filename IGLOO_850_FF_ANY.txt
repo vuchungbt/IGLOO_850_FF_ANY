@@ -1,0 +1,12 @@
+- Date time: 10/8/2024 12:00:00 AM
+- User: 
+- ProfileGroup: I-J
+- Profile: Igloo
+************************************************************************* 
+- Project: IGLOO_850_FF_ANY
+- Version: 20240712
+- Description: Case#- Description: Case#17480688
+HubID: 14216; mapID: 5621
+
+- Update: index#0: Record:1400(161:35)
+- Specification: 

@@ -1,0 +1,16 @@
+<xmap>
+<doc type="job" name="IGLOO_850_FF_ANY">
+<node type="task" name="Files">
+<component>COLLECTSRCFILES.dll</component>
+<metainfo>../jobs/IGLOO_850_FF_ANY/map_1_CollectSourceFiles_Files.xml#Files</metainfo>
+</node>
+<node type="task" name="sourceMap_850">
+<component>FFSRC.dll</component>
+<metainfo>../jobs/IGLOO_850_FF_ANY/map_2_FlatFileSource_sourceMap_850.xml#sourceMap_850</metainfo>
+</node>
+<node type="task" name="targetMap_850">
+<component>FFTRG.dll</component>
+<metainfo>../jobs/IGLOO_850_FF_ANY/map_3_FlatFileTarget_targetMap_850.xml#targetMap_850</metainfo>
+</node>
+</doc>
+</xmap>
