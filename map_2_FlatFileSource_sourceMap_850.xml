@@ -1480,8 +1480,11 @@
 </node>
 <node type="field" order="159" name="Product_Code5">
 <separator>TAB</separator>
-<functions FunctionCount="3">
+<functions FunctionCount="6">
 <function type="If" lvalue="@vReciverID" rvalue="800040" operator="="/>
+<function type="Setvalue" exd="Exchange850" table="OrderDetail_2000" field="CustItemName"/>
+<function type="EndIf" />
+<function type="If" lvalue="@vReciverID" rvalue="800020" operator="="/>
 <function type="Setvalue" exd="Exchange850" table="OrderDetail_2000" field="CustItemName"/>
 <function type="EndIf" />
 </functions>
